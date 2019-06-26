@@ -25,7 +25,7 @@ class CreatePerfilsTable extends Migration
             $table->unsignedInteger('etnia_id');
             $table->unsignedInteger('domicilio_id');
             $table->unsignedInteger('nacionalidad_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id')->nullable();
 
             $table->foreign('sexo_id')->references('id')->on('sexos')->onDelete('cascade');
 
