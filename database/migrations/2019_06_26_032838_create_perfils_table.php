@@ -27,21 +27,21 @@ class CreatePerfilsTable extends Migration
             $table->unsignedInteger('nacionalidad_id');
             $table->unsignedInteger('user_id');
 
-            $table->foreign('sexo_id')->references('id')->on('sexo')->onDelete('cascade');
+            $table->foreign('sexo_id')->references('id')->on('sexos')->onDelete('cascade');
 
-            $table->foreign('recinto_id')->references('id')->on('recinto')->onDelete('cascade');
+            $table->foreign('recinto_id')->references('id')->on('recintos')->onDelete('cascade');
 
-            $table->foreign('carrera')->references('id')->on('carrera')->onDelete('cascade');
+            $table->foreign('carrera')->references('id')->on('carreras')->onDelete('cascade');
 
-            $table->foreign('modalidad_id')->references('id')->on('modalidad')->onDelete('cascade');
+            $table->foreign('modalidad_id')->references('id')->on('modalidades')->onDelete('cascade');
 
-            $table->foreign('etnia_id')->references('id')->on('etnia')->onDelete('cascade');
+            $table->foreign('etnia_id')->references('id')->on('etnias')->onDelete('cascade');
 
-            $table->foreign('domicilio_id')->references('id')->on('domicilio')->onDelete('cascade');
+            $table->foreign('domicilio_id')->references('id')->on('domicilios')->onDelete('cascade');
 
-            $table->foreign('nacionalidad_id')->references('id')->on('nacionalidad')->onDelete('cascade');
+            $table->foreign('nacionalidad_id')->references('id')->on('nacionalidades')->onDelete('cascade');
 
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });
