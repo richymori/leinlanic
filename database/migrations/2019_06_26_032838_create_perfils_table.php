@@ -31,7 +31,7 @@ class CreatePerfilsTable extends Migration
 
             $table->foreign('recinto_id')->references('id')->on('recintos')->onDelete('cascade');
 
-            $table->foreign('carrera')->references('id')->on('carreras')->onDelete('cascade');
+            $table->foreign('carrera_id')->references('id')->on('carreras')->onDelete('cascade');
 
             $table->foreign('modalidad_id')->references('id')->on('modalidades')->onDelete('cascade');
 
