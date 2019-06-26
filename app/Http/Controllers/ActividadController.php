@@ -10,7 +10,7 @@ class ActividadController extends Controller
 {
     public function index()
     {
-        return Nivel::with([
+        return Actividad::with([
             'leccion',
         ])->get();
     }
