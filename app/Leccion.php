@@ -12,4 +12,9 @@ class Leccion extends Model
     {
         return $this->belongsTo(Nivel::class);
     }
+    
+    public function actividades()
+    {
+        return $this->hasMany(Actividad::class);
+    }
 }
