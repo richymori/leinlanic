@@ -3,7 +3,7 @@
         <tr>
             <th>Actividad</th>
             <th>Descripcion</th>
-            <th>Curso</th>
+            <th>Leccion</th>
             <th>Opciones</th>
         </tr>
     </thead>
@@ -12,7 +12,7 @@
         <tr>
             <td>{{$item->actividad}}</td>
             <td>{{$item->descripcion}}</td>
-            <td>{{$item->leccion}}</td>
+            <td>{{$item->leccion->leccion}}</td>
             <td>
                 <div>
                     <a href="/actividades/editar/{{$item->id}}" class="btn btn-success btn-sm"></a>
