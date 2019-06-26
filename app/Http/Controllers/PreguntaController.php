@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Pregunta;
 use Illuminate\Http\Request;
+use App\TipoPregunta;
+use App\Actividad;
 
 class PreguntaController extends Controller
 {
@@ -14,7 +16,10 @@ class PreguntaController extends Controller
      */
     public function index()
     {
-        //
+        return Pregunta::with([
+            'tipo_pregunta',
+            'actividad'
+        ])->get();
     }
 
     /**
@@ -24,7 +29,10 @@ class PreguntaController extends Controller
      */
     public function create()
     {
-        //
+        $tipopreguntas = TipoPregunta::all();
+        $actividades = Actividad::all();
+
+        return view('preguntas.crearpregunta', compact('tipopreguntas', 'actividades'));
     }
 
     /**
@@ -35,7 +43,15 @@ class PreguntaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pregunta =new Pregunta();
+        $pregunta ->titulo = $request['titulo'];
+        $pregunta ->pregunta = $request['pregunta'];
+        $pregunta ->imagen = $request['imagen'];
+        $pregunta ->tipo_pregunta_id = $request['tipo_pregunta_id'];
+        $pregunta ->actividad_id = $request['actividad_id'];
+        $pregunta->save();
+        return redirect('preguntas/lista');
+
     }
 
     /**
@@ -46,7 +62,7 @@ class PreguntaController extends Controller
      */
     public function show(Pregunta $pregunta)
     {
-        //
+        return $pregunta;
     }
 
     /**
@@ -57,7 +73,11 @@ class PreguntaController extends Controller
      */
     public function edit(Pregunta $pregunta)
     {
-        //
+        $tipopreguntas = TipoPregunta::all();
+        $actividades = Actividad::all();
+
+        return view('preguntas.editarpregunta',['pregunta'=> $pregunta], compact('tipopreguntas', 'actividades'));
+
     }
 
     /**
@@ -69,7 +89,13 @@ class PreguntaController extends Controller
      */
     public function update(Request $request, Pregunta $pregunta)
     {
-        //
+        $pregunta ->titulo = $request['titulo'];
+        $pregunta ->pregunta = $request['pregunta'];
+        $pregunta ->imagen = $request['imagen'];
+        $pregunta ->tipo_pregunta_id = $request['tipo_pregunta_id'];
+        $pregunta ->actividad_id = $request['actividad_id'];
+        $pregunta->save();
+        return redirect('preguntas/lista');
     }
 
     /**
@@ -80,6 +106,14 @@ class PreguntaController extends Controller
      */
     public function destroy(Pregunta $pregunta)
     {
-        //
+        $pregunta->delete();
+        return redirect('preguntas/lista');
+    }
+
+
+    public function list()
+    {
+       $rs= $this->index();
+       return view('preguntas.listapregunta', ['rs'=> $rs]);
     }
 }

@@ -8,6 +8,7 @@ class Actividad extends Model
 {
     protected $table = 'actividades';
 
+
     public function leccion()
     {
         return $this->belongsTo(Leccion::class);
@@ -19,5 +20,8 @@ class Actividad extends Model
         return $this->hasMany(Pregunta::class);
     }
 
+
+
+   
 
 }
