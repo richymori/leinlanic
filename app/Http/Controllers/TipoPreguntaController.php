@@ -14,7 +14,8 @@ class TipoPreguntaController extends Controller
      */
     public function index()
     {
-        //
+        $rs = TipoPregunta::all();
+        return $rs;
     }
 
     /**
@@ -24,7 +25,7 @@ class TipoPreguntaController extends Controller
      */
     public function create()
     {
-        //
+        return view('tipopreguntas.creartipopregunta');
     }
 
     /**
@@ -35,7 +36,10 @@ class TipoPreguntaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tipopregunta =new TipoPregunta();
+        $tipopregunta->tipo_pregunta = $request['tipo_pregunta'];
+        $tipopregunta->save();
+        return redirect('tipopreguntas/lista');
     }
 
     /**
@@ -46,7 +50,7 @@ class TipoPreguntaController extends Controller
      */
     public function show(TipoPregunta $tipoPregunta)
     {
-        //
+        return $tipoPregunta;
     }
 
     /**
@@ -57,7 +61,7 @@ class TipoPreguntaController extends Controller
      */
     public function edit(TipoPregunta $tipoPregunta)
     {
-        //
+        return view('tipopreguntas.editartipopregunta', ['tipo'=> $tipoPregunta]);
     }
 
     /**
@@ -69,7 +73,9 @@ class TipoPreguntaController extends Controller
      */
     public function update(Request $request, TipoPregunta $tipoPregunta)
     {
-        //
+        $tipoPregunta->tipo_pregunta = $request['tipo_pregunta'];
+        $tipoPregunta->save();
+        return redirect('tipopreguntas/lista');
     }
 
     /**
@@ -80,6 +86,15 @@ class TipoPreguntaController extends Controller
      */
     public function destroy(TipoPregunta $tipoPregunta)
     {
-        //
+        $tipoPregunta->delete();
+        return redirect('tipopreguntas/lista');
+    }
+
+
+    public function list()
+    {
+        $rs = $this->index();
+        return view('tipopreguntas.listatipopregunta', ['rs' => $rs]);
+
     }
 }

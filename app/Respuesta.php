@@ -9,4 +9,10 @@ class Respuesta extends Model
     protected $table = 'respuestas';
 
 
+    //RELACION PREGUNTAS ADMIN
+     public function pregunta()
+    {
+        return $this->belongsTo(Pregunta::class);
+    }
+
 }
