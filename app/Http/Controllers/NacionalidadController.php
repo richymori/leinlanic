@@ -14,7 +14,9 @@ class NacionalidadController extends Controller
      */
     public function index()
     {
-        //
+        $qs = Nacionalidad::all();
+
+        return $qs;
     }
 
     /**
@@ -24,7 +26,7 @@ class NacionalidadController extends Controller
      */
     public function create()
     {
-        //
+        return view('nacionalidades.create');
     }
 
     /**
@@ -35,7 +37,10 @@ class NacionalidadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nacionalidad = new  Nacionalidad();
+        $nacionalidad->nacionalidad = $request['nacionalidad'];
+        $nacionalidad->save();
+        return redirect('nacionalidades/list');
     }
 
     /**
@@ -46,7 +51,8 @@ class NacionalidadController extends Controller
      */
     public function show(Nacionalidad $nacionalidad)
     {
-        //
+        $registroEncontrado = Nacionalidad::find($id);
+        return $registroEncontrado;
     }
 
     /**
@@ -57,7 +63,7 @@ class NacionalidadController extends Controller
      */
     public function edit(Nacionalidad $nacionalidad)
     {
-        //
+        return view('nacionalidades/editar', ['nacionalidad' => $nacionalidad]);
     }
 
     /**
@@ -69,7 +75,9 @@ class NacionalidadController extends Controller
      */
     public function update(Request $request, Nacionalidad $nacionalidad)
     {
-        //
+        $nacionalidad->nacionalidad = $request['nacionalidad'];
+        $nacionalidad->save();
+        return redirect('nacionalidades/list');
     }
 
     /**
@@ -80,6 +88,13 @@ class NacionalidadController extends Controller
      */
     public function destroy(Nacionalidad $nacionalidad)
     {
-        //
+        $nacionalidad->delete();
+        return redirect('nacionalidades/list');
     }
+    public function list()
+    {
+        $rs = $this->index();
+        return view('nacionalidades/lista', ['rs' => $rs]);
+    }
+
 }

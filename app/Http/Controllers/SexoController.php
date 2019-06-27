@@ -6,6 +6,7 @@ use App\Sexo;
 use Illuminate\Http\Request;
 
 class SexoController extends Controller
+
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,9 @@ class SexoController extends Controller
      */
     public function index()
     {
-        //
+        $qs = Sexo::all();
+
+        return $qs;
     }
 
     /**
@@ -22,10 +25,11 @@ class SexoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('sexos.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -35,8 +39,13 @@ class SexoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sexo = new  Sexo();
+        $sexo->sexo = $request['sexo'];
+        $sexo->save();
+        return $sexo;
+
     }
+
 
     /**
      * Display the specified resource.
@@ -44,9 +53,10 @@ class SexoController extends Controller
      * @param  \App\Sexo  $sexo
      * @return \Illuminate\Http\Response
      */
-    public function show(Sexo $sexo)
+    public function show(Sexo $sexo, $id)
     {
-        //
+        $registroEncontrado = Sexo::find($id);
+        return $registroEncontrado;
     }
 
     /**
@@ -57,7 +67,7 @@ class SexoController extends Controller
      */
     public function edit(Sexo $sexo)
     {
-        //
+        return view('sexos/editar', ['sexo' => $sexo]);
     }
 
     /**
@@ -69,7 +79,9 @@ class SexoController extends Controller
      */
     public function update(Request $request, Sexo $sexo)
     {
-        //
+        $sexo->sexo = $request['sexo'];
+        $sexo->save();
+        return redirect('sexos/list');
     }
 
     /**
@@ -80,6 +92,14 @@ class SexoController extends Controller
      */
     public function destroy(Sexo $sexo)
     {
-        //
+        $sexo->delete();
+        return redirect('sexos/list');
     }
+
+    public function list()
+    {
+        $rs = $this->index();
+        return view('sexos/lista', ['rs' => $rs]);
+    }
+
 }

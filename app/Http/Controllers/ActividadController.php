@@ -4,82 +4,64 @@ namespace App\Http\Controllers;
 
 use App\Actividad;
 use Illuminate\Http\Request;
+use App\Leccion;
 
 class ActividadController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return Actividad::with([
+            'leccion',
+        ])->get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $lecciones = Leccion::all();
+        return view('actividades.crearactividades', compact('lecciones'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $actividad = new Actividad();
+        $actividad->actividad = $request['leccion'];
+        $actividad->descripcion = $request['descripcion'];
+        $actividad->leccion_id = $request['leccion_id'];
+        $actividad->save();
+
+        return $actividad;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Actividad  $actividad
-     * @return \Illuminate\Http\Response
-     */
     public function show(Actividad $actividad)
     {
-        //
+        return $actividad;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Actividad  $actividad
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Actividad $actividad)
     {
-        //
+        $lecciones = Leccion::all();
+        return view('actividades.editaractividades', ['actividad' => $actividad], compact('lecciones'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Actividad  $actividad
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Actividad $actividad)
     {
-        //
+        $actividad->actividad = $request['leccion'];
+        $actividad->descripcion = $request['descripcion'];
+        $actividad->leccion_id = $request['leccion_id'];
+        $actividad->save();
+
+        return redirect('actividades');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Actividad  $actividad
-     * @return \Illuminate\Http\Response
-     */
+    public function list()
+    {
+        $ac = $this->index();
+        return view('actividades.listaactividades', ['ac' => $ac]);
+    }
+
     public function destroy(Actividad $actividad)
     {
-        //
+        $actividad->delete();
+        return redirect('actividades');
     }
 }

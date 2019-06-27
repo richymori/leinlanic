@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Respuesta;
 use Illuminate\Http\Request;
+use App\Pregunta;
 
 class RespuestaController extends Controller
 {
@@ -14,7 +15,9 @@ class RespuestaController extends Controller
      */
     public function index()
     {
-        //
+        return Respuesta::with([
+            'pregunta'
+        ])->get();
     }
 
     /**
@@ -24,7 +27,9 @@ class RespuestaController extends Controller
      */
     public function create()
     {
-        //
+        $preguntas = Pregunta::all();
+
+        return view('respuestas.crearrespuesta', compact('preguntas'));
     }
 
     /**
@@ -35,7 +40,14 @@ class RespuestaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $respuesta = new Respuesta();
+        $respuesta->titulo =$request['titulo'];
+        $respuesta->respuesta =$request['respuesta'];
+        $respuesta->imagen =$request['imagen'];
+        $respuesta->pregunta_id = $request['pregunta_id'];
+        $respuesta->is_correct = $request['is_correct'];
+        $respuesta->save();
+        return redirect('respuestas/lista');
     }
 
     /**
@@ -46,7 +58,7 @@ class RespuestaController extends Controller
      */
     public function show(Respuesta $respuesta)
     {
-        //
+        return $respuesta;
     }
 
     /**
@@ -57,7 +69,9 @@ class RespuestaController extends Controller
      */
     public function edit(Respuesta $respuesta)
     {
-        //
+        $preguntas = Pregunta::all();
+
+        return view('respuestas.editarrespuesta', ['respuesta' => $respuesta], compact('preguntas'));
     }
 
     /**
@@ -69,7 +83,13 @@ class RespuestaController extends Controller
      */
     public function update(Request $request, Respuesta $respuesta)
     {
-        //
+        $respuesta->titulo =$request['titulo'];
+        $respuesta->respuesta =$request['respuesta'];
+        $respuesta->imagen =$request['imagen'];
+        $respuesta->pregunta_id = $request['pregunta_id'];
+        $respuesta->is_correct = $request['is_correct'];
+        $respuesta->save();
+        return redirect('respuestas/lista');
     }
 
     /**
@@ -80,6 +100,14 @@ class RespuestaController extends Controller
      */
     public function destroy(Respuesta $respuesta)
     {
-        //
+        $respuesta->delete();
+        return redirect('respuestas/lista');
+
+    }
+
+    public function list()
+    {
+        $rs = $this->index();
+        return view('respuestas.listarespuesta', ['rs' => $rs]);
     }
 }

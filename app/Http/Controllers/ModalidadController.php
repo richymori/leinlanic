@@ -14,7 +14,9 @@ class ModalidadController extends Controller
      */
     public function index()
     {
-        //
+        $qs = Modalidad::all();
+
+        return $qs;
     }
 
     /**
@@ -24,7 +26,7 @@ class ModalidadController extends Controller
      */
     public function create()
     {
-        //
+        return view('modalidades.create');
     }
 
     /**
@@ -35,7 +37,10 @@ class ModalidadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $modalidad = new  Modalidad();
+        $modalidad->modalidad = $request['modalidad'];
+        $modalidad->save();
+        return redirect('modalidades/list');
     }
 
     /**
@@ -44,11 +49,12 @@ class ModalidadController extends Controller
      * @param  \App\Modalidad  $modalidad
      * @return \Illuminate\Http\Response
      */
-    public function show(Modalidad $modalidad)
+    public function show(Modalidad $modalidad, $id)
     {
-        //
-    }
+        $registroEncontrado = Modalidad::find($id);
+        return $registroEncontrado;
 
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -57,7 +63,7 @@ class ModalidadController extends Controller
      */
     public function edit(Modalidad $modalidad)
     {
-        //
+        return view('modalidades/editar', ['modalidad' => $modalidad]);
     }
 
     /**
@@ -69,7 +75,9 @@ class ModalidadController extends Controller
      */
     public function update(Request $request, Modalidad $modalidad)
     {
-        //
+        $modalidad->modalidad = $request['modalidad'];
+        $modalidad->save();
+        return redirect('modalidades/list');
     }
 
     /**
@@ -80,6 +88,13 @@ class ModalidadController extends Controller
      */
     public function destroy(Modalidad $modalidad)
     {
-        //
+        $modalidad->delete();
+        return redirect('modalidades/list');
     }
-}
+    public function list()
+    {
+        $rs = $this->index();
+        return view('modalidades/lista', ['rs' => $rs]);
+    }
+    }
+
