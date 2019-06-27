@@ -14,7 +14,9 @@ class CarreraController extends Controller
      */
     public function index()
     {
-        //
+        $qs = carrera::all();
+
+        return $qs;
     }
 
     /**
@@ -24,7 +26,8 @@ class CarreraController extends Controller
      */
     public function create()
     {
-        //
+        return view('carreras.create');
+
     }
 
     /**
@@ -35,7 +38,10 @@ class CarreraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $carrera = new  Carrera();
+        $carrera->carrera = $request['carrera'];
+        $carrera->save();
+        return redirect('carreras/list');
     }
 
     /**
@@ -44,9 +50,10 @@ class CarreraController extends Controller
      * @param  \App\carrera  $carrera
      * @return \Illuminate\Http\Response
      */
-    public function show(carrera $carrera)
+    public function show(carrera $carrera, $id)
     {
-        //
+        $registroEncontrado = Carrera::find($id);
+        return $registroEncontrado;
     }
 
     /**
@@ -57,7 +64,8 @@ class CarreraController extends Controller
      */
     public function edit(carrera $carrera)
     {
-        //
+        return view('carreras/editar', ['carrera' => $carrera]);
+
     }
 
     /**
@@ -69,7 +77,9 @@ class CarreraController extends Controller
      */
     public function update(Request $request, carrera $carrera)
     {
-        //
+        $carrera->carrera = $request['carrera'];
+        $carrera->save();
+        return redirect('carreras/list');
     }
 
     /**
@@ -80,6 +90,12 @@ class CarreraController extends Controller
      */
     public function destroy(carrera $carrera)
     {
-        //
+        $carrera->delete();
+        return redirect('carreras/list');
+    }
+    public function list()
+    {
+        $rs = $this->index();
+        return view('carreras/lista', ['rs' => $rs]);
     }
 }

@@ -14,9 +14,12 @@ class DomicilioController extends Controller
      */
     public function index()
     {
-        //
-    }
 
+        $qs = domicilio::all();
+
+        return $qs;
+
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +27,8 @@ class DomicilioController extends Controller
      */
     public function create()
     {
-        //
+       return view('domicilios.create');
+
     }
 
     /**
@@ -35,7 +39,10 @@ class DomicilioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $domicilio = new  Domicilio();
+        $domicilio->domicilio = $request['domicilio'];
+        $domicilio->save();
+        return redirect('domicilios/list');
     }
 
     /**
@@ -44,9 +51,11 @@ class DomicilioController extends Controller
      * @param  \App\Domicilio  $domicilio
      * @return \Illuminate\Http\Response
      */
-    public function show(Domicilio $domicilio)
+    public function show(Domicilio $domicilio, $id)
     {
-        //
+        $registroEncontrado = Domicilio::find($id);
+        return $registroEncontrado;
+
     }
 
     /**
@@ -57,7 +66,7 @@ class DomicilioController extends Controller
      */
     public function edit(Domicilio $domicilio)
     {
-        //
+        return view('domicilios/editar', ['domicilio' => $domicilio]);
     }
 
     /**
@@ -69,7 +78,9 @@ class DomicilioController extends Controller
      */
     public function update(Request $request, Domicilio $domicilio)
     {
-        //
+        $domicilio->domicilio = $request['domicilio'];
+        $domicilio->save();
+        return redirect('domicilios/list');
     }
 
     /**
@@ -80,6 +91,12 @@ class DomicilioController extends Controller
      */
     public function destroy(Domicilio $domicilio)
     {
-        //
+        $domicilio->delete();
+        return redirect('domicilios/list');
+    }
+    public function list()
+    {
+        $rs = $this->index();
+        return view('domicilios/lista', ['rs' => $rs]);
     }
 }
