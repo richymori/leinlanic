@@ -14,7 +14,8 @@ class DesarrolladorController extends Controller
      */
     public function index()
     {
-        //
+      $qs = Desarrollador::all();
+      return $qs;
     }
 
     /**
@@ -24,7 +25,7 @@ class DesarrolladorController extends Controller
      */
     public function create()
     {
-        //
+        return view('desarrolladores.creardesarrollador');
     }
 
     /**
@@ -35,7 +36,14 @@ class DesarrolladorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $desarrollador= new Desarrollador();
+        $desarrollador->nombres =$request['nombres'];
+        $desarrollador->apellidos =$request['apellidos'];
+        $desarrollador->email =$request['email'];
+        $desarrollador->telefono =$request['telefono'];
+        $desarrollador->save();
+
+        return redirect('desarrolladores/lista');
     }
 
     /**
@@ -46,7 +54,7 @@ class DesarrolladorController extends Controller
      */
     public function show(Desarrollador $desarrollador)
     {
-        //
+        return $desarrollador;
     }
 
     /**
@@ -57,7 +65,7 @@ class DesarrolladorController extends Controller
      */
     public function edit(Desarrollador $desarrollador)
     {
-        //
+        return view('desarrolladores.editardesarrollador',['desarrollador' => $desarrollador]);
     }
 
     /**
@@ -69,7 +77,14 @@ class DesarrolladorController extends Controller
      */
     public function update(Request $request, Desarrollador $desarrollador)
     {
-        //
+
+        $desarrollador->nombres=$request['nombres'];
+        $desarrollador->apellidos=$request['apellidos'];
+        $desarrollador->email=$request['email'];
+        $desarrollador->telefono=$request['telefono'];
+        $desarrollador->save();
+
+        return redirect('desarrolladores/lista');
     }
 
     /**
@@ -80,6 +95,14 @@ class DesarrolladorController extends Controller
      */
     public function destroy(Desarrollador $desarrollador)
     {
-        //
+     $desarrollador->delete();
+     return redirect('desarrollador/lista');
+    }
+
+    public function list()
+    {
+        $rs = $this->index();
+        return view('desarrolladores.listadesarrollador',['rs'=> $rs]);
     }
 }
+

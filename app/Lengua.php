@@ -8,5 +8,10 @@ class Lengua extends Model
 {
     protected $table = 'lenguas';
 
+     public function curso()
+     {
+         return $this->hasMany( Curso::class);
+     }
+
 
 }
