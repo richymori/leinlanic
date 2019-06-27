@@ -14,7 +14,9 @@ class EtniaController extends Controller
      */
     public function index()
     {
-        //
+        $qs = etnia::all();
+
+        return $qs;
     }
 
     /**
@@ -24,7 +26,7 @@ class EtniaController extends Controller
      */
     public function create()
     {
-        //
+        return view('etnias.create');
     }
 
     /**
@@ -35,7 +37,10 @@ class EtniaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $etnia = new  Etnia();
+        $etnia->etnia = $request['etnia'];
+        $etnia->save();
+        return redirect('etnias/list');
     }
 
     /**
@@ -44,9 +49,10 @@ class EtniaController extends Controller
      * @param  \App\Etnia  $etnia
      * @return \Illuminate\Http\Response
      */
-    public function show(Etnia $etnia)
+    public function show(Etnia $etnia, $id)
     {
-        //
+        $registroEncontrado = Etnia::find($id);
+        return $registroEncontrado;
     }
 
     /**
@@ -57,7 +63,7 @@ class EtniaController extends Controller
      */
     public function edit(Etnia $etnia)
     {
-        //
+        return view('etnias/editar', ['etnia' => $etnia]);
     }
 
     /**
@@ -69,7 +75,9 @@ class EtniaController extends Controller
      */
     public function update(Request $request, Etnia $etnia)
     {
-        //
+        $etnia->etnia = $request['etnia'];
+        $etnia->save();
+        return redirect('etnias/list');
     }
 
     /**
@@ -80,6 +88,12 @@ class EtniaController extends Controller
      */
     public function destroy(Etnia $etnia)
     {
-        //
+        $etnia->delete();
+        return redirect('etnias/list');
+    }
+    public function list()
+    {
+        $rs = $this->index();
+        return view('etnias/lista', ['rs' => $rs]);
     }
 }

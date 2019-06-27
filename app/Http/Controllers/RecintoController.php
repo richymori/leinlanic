@@ -14,7 +14,9 @@ class RecintoController extends Controller
      */
     public function index()
     {
-        //
+        $qs = Recinto::all();
+
+        return $qs;
     }
 
     /**
@@ -24,7 +26,7 @@ class RecintoController extends Controller
      */
     public function create()
     {
-        //
+        return view('recintos.create');
     }
 
     /**
@@ -35,7 +37,11 @@ class RecintoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $recinto = new  Recinto();
+        $recinto->recinto = $request['recinto'];
+        $recinto->save();
+        return redirect('recintos/list');
+
     }
 
     /**
@@ -44,9 +50,10 @@ class RecintoController extends Controller
      * @param  \App\Recinto  $recinto
      * @return \Illuminate\Http\Response
      */
-    public function show(Recinto $recinto)
+    public function show(Recinto $recinto, $id)
     {
-        //
+        $registroEncontrado = Recinto::find($id);
+        return $registroEncontrado;
     }
 
     /**
@@ -57,7 +64,7 @@ class RecintoController extends Controller
      */
     public function edit(Recinto $recinto)
     {
-        //
+        return view('recintos/editar', ['recinto' => $recinto]);
     }
 
     /**
@@ -69,7 +76,9 @@ class RecintoController extends Controller
      */
     public function update(Request $request, Recinto $recinto)
     {
-        //
+        $recinto->recinto = $request['recinto'];
+        $recinto->save();
+        return redirect('recintos/list');
     }
 
     /**
@@ -80,6 +89,12 @@ class RecintoController extends Controller
      */
     public function destroy(Recinto $recinto)
     {
-        //
+        $recinto->delete();
+        return redirect('recintos/list');
+    }
+    public function list()
+    {
+        $rs = $this->index();
+        return view('recintos/lista', ['rs' => $rs]);
     }
 }
