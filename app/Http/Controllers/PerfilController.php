@@ -4,6 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Perfil;
 use Illuminate\Http\Request;
+use App\Sexo;
+use App\Recinto;
+use App\Carrera;
+use App\Area;
+use App\Modalidad;
+use App\Etnia;
+use App\Nacionalidad;
+use App\Domicilio;
+use App\User;
 
 class PerfilController extends Controller
 {
@@ -14,7 +23,17 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        //
+        return Perfil::with([
+            'sexo',
+            'recinto',
+            'carrera',
+            'area',
+            'modalidad',
+            'etnia',
+            'nacionalidad',
+            'user',
+            'domicilio'
+        ])->get();
     }
 
     /**
@@ -24,8 +43,18 @@ class PerfilController extends Controller
      */
     public function create()
     {
-        //
+    
+        $sexos = Sexo::all();
+        $recintos = Recinto::all();
+        $carreras = Carrera::all();
+        $areas = Area::all();
+        $modalidades = Modalidad::all();
+        $etnias = Etnia::all();
+        $nacionalidades = Nacionalidad::all();
+        $domicilio = Domicilio::all();
+        return view('perfiles.crearperfiles', compact('sexos', 'recintos', 'carreras', 'areas', 'modalidades', 'domicilio','etnias', 'nacionalidades'));
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +64,20 @@ class PerfilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $perfil = new Perfil();
+        $perfil->nombres = $request['nombres'];
+        $perfil->apellidos = $request['apellidos'];
+        $perfil->sexo_id  = $request['sexo_id'];
+        $perfil->recinto_id = $request['recinto_id'];
+        $perfil->carrera_id = $request['carrera_id'];
+        $perfil->area_id = $request['area_id'];
+        $perfil->modalidad_id = $request['modalidad_id'];
+        $perfil->etnia_id = $request['etnia_id'];
+        $perfil->nacionalidad_id = $request['nacionalidad_id'];
+        $perfil->domicilio_id = $request['domicilio_id'];
+        $perfil->user_id = auth()->id();
+        $perfil->save();
+        return redirect('perfil');
     }
 
     /**
@@ -46,7 +88,7 @@ class PerfilController extends Controller
      */
     public function show(Perfil $perfil)
     {
-        //
+        return $perfil;
     }
 
     /**
@@ -57,8 +99,17 @@ class PerfilController extends Controller
      */
     public function edit(Perfil $perfil)
     {
-        //
+        $sexos = Sexo::all();
+        $recintos = Recinto::all();
+        $carreras = Carrera::all();
+        $areas = Area::all();
+        $modalidades = Modalidad::all();
+        $etnias = Etnia::all();
+        $nacionalidades = Nacionalidad::all();
+        $domicilio = Domicilio::all();
+        return view('perfiles/editarperfiles', ['perfil' => $perfil], compact('sexos', 'recintos', 'carreras', 'areas', 'modalidades', 'etnias', 'nacionalidades', 'domicilio'));
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +120,19 @@ class PerfilController extends Controller
      */
     public function update(Request $request, Perfil $perfil)
     {
-        //
+        $perfil->nombres = $request['nombres'];
+        $perfil->apellidos = $request['apellidos'];
+        $perfil->sexo_id  = $request['sexo_id'];
+        $perfil->recinto_id = $request['recinto_id'];
+        $perfil->carrera_id = $request['carrera_id'];
+        $perfil->area_id = $request['area_id'];
+        $perfil->modalidad_id = $request['modalidad_id'];
+        $perfil->etnia_id = $request['etnia_id'];
+        $perfil->nacionalidad_id = $request['nacionalidad_id'];
+        $perfil->domicilio_id = $request['domicilio_id'];
+        $perfil->user_id = $request['user_id'];
+        $perfil->save();
+        return redirect('perfiles');
     }
 
     /**
@@ -80,6 +143,12 @@ class PerfilController extends Controller
      */
     public function destroy(Perfil $perfil)
     {
-        //
+        $perfil->delete();
+        return redirect('perfiles/list');
+    }
+    public function list()
+    {
+        $rs = $this->index();
+        return view('perfiles/listaperfiles',['rs' => $rs]);
     }
 }

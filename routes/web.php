@@ -169,3 +169,14 @@ Route::delete('actividades/{actividad}','ActividadController@destroy');
     Route::delete('tipopreguntas/{tipoPregunta}', 'TipoPreguntaController@destroy');
 
 
+    // P E R F I L E S
+    Route::get('perfiles/editar/{perfil}', 'PerfilController@edit');
+    Route::get('perfiles/list', 'PerfilController@list');
+    Route::get('perfiles/crear', 'PerfilController@create');
+
+    Route::get('perfiles', 'PerfilController@index');
+    Route::get('perfiles/{perfil}', 'PerfilController@show');
+    Route::post('perfiles', 'PerfilController@store');
+    Route::patch('perfiles/{perfil}', 'PerfilController@update');
+    Route::delete('perfiles/{perfil}', 'PerfilController@destroy');
+
