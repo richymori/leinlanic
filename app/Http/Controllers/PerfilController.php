@@ -77,7 +77,7 @@ class PerfilController extends Controller
         $perfil->domicilio_id = $request['domicilio_id'];
         $perfil->user_id = auth()->id();
         $perfil->save();
-        return redirect('perfil');
+        return redirect('perfiles/list');
     }
 
     /**
@@ -132,7 +132,7 @@ class PerfilController extends Controller
         $perfil->domicilio_id = $request['domicilio_id'];
         $perfil->user_id = $request['user_id'];
         $perfil->save();
-        return redirect('perfiles');
+        return redirect('perfiles/list');
     }
 
     /**

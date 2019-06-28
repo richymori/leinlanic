@@ -29,7 +29,7 @@
               
             <td>
             <a href="/perfiles/editar/{{$item->id}}">Editar</a>
-            <form action="{{url('perfiles/list', $item->id)}}" method="POST" role="form" id="delete_form_{{$item->id}}">
+            <form action="{{url('perfiles', $item->id)}}" method="POST" role="form" id="delete_form_{{$item->id}}">
             @csrf()
             @method('DELETE')
         <a href="javascript:{}" Onclick="document.getElementById('delete_form_{{$item->id}}').submit();">Eliminar</a>
