@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Tarjeta from './Tarjeta'
 import Tabla from './Tabla';
+import Bienvenido from './Bienvenido';
 
 const App = () => {
     return (
@@ -11,6 +12,9 @@ const App = () => {
                     <Tarjeta titulo={'Tarjeta de ejemplo'}>
                         <Tabla />
                     </Tarjeta>
+                </div>
+                <div className="col-md-6">
+                    <Bienvenido />
                 </div>
             </div>
         </div>

@@ -61538,6 +61538,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Tarjeta__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tarjeta */ "./resources/js/components/Tarjeta.js");
 /* harmony import */ var _Tabla__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Tabla */ "./resources/js/components/Tabla.js");
+/* harmony import */ var _Bienvenido__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Bienvenido */ "./resources/js/components/Bienvenido.js");
+
 
 
 
@@ -61552,12 +61554,46 @@ var App = function App() {
     className: "col-md-8"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Tarjeta__WEBPACK_IMPORTED_MODULE_2__["default"], {
     titulo: 'Tarjeta de ejemplo'
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Tabla__WEBPACK_IMPORTED_MODULE_3__["default"], null)))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Tabla__WEBPACK_IMPORTED_MODULE_3__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-6"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Bienvenido__WEBPACK_IMPORTED_MODULE_4__["default"], null))));
 };
 
 if (document.getElementById('app')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById('app'));
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/Bienvenido.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/Bienvenido.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Bienvenido = function Bienvenido(props) {
+  var handleClickButton = function handleClickButton() {
+    alert('Bienvenidos Hijos de su madre');
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "rounded-circle bg-danger"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    onClick: handleClickButton
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "text-white"
+  }, "Welcome")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Bienvenido);
 
 /***/ }),
 
@@ -61773,8 +61809,8 @@ var Tarjeta = function Tarjeta(props) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/darwin/Sites/leinlanic/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/darwin/Sites/leinlanic/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\JHOSELL\PROGRAMAS\laragon\www\leinlanic\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\JHOSELL\PROGRAMAS\laragon\www\leinlanic\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
