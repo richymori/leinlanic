@@ -8,8 +8,8 @@ const Tabla = () => {
             <table className="table table-striped table-inverse">
                 <thead className="thead-inverse">
                     <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
                         <th>Edad</th>
                         <th><span className="fa fa-cog"></span></th>
                     </tr>

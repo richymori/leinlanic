@@ -212,3 +212,7 @@ Route::delete('actividades/{actividad}','ActividadController@destroy');
     Route::patch('perfiles/{perfil}', 'PerfilController@update');
     Route::delete('perfiles/{perfil}', 'PerfilController@destroy');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

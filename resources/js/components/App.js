@@ -7,8 +7,11 @@ const App = () => {
     return (
         <div className="container">
             <div className="row justify-content-center">
+                <br></br>
+                <br></br>
+                <br></br>
                 <div className="col-md-8">
-                    <Tarjeta titulo={'Tarjeta de ejemplo'}>
+                    <Tarjeta titulo={'TARJETA DE EJEMPLO #1'}>
                         <Tabla />
                     </Tarjeta>
                 </div>
