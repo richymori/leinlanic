@@ -51088,7 +51088,7 @@ function insertNonHydratedInstance(returnFiber, fiber) {
               didNotFindHydratableContainerTextInstance(parentContainer, text);
               break;
             case SuspenseComponent:
-              
+
               break;
           }
           break;
@@ -61538,6 +61538,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Tarjeta__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tarjeta */ "./resources/js/components/Tarjeta.js");
 /* harmony import */ var _Tabla__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Tabla */ "./resources/js/components/Tabla.js");
+/* harmony import */ var _Course__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Course */ "./resources/js/components/Course.js");
+
 
 
 
@@ -61557,6 +61559,44 @@ var App = function App() {
 
 if (document.getElementById('app')) {
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById('app'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Course.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Course.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Course; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+function Course(props) {
+  var divStyle = {
+    width: '400px'
+  };
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card m-2",
+    style: divStyle
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "imgs/148957.jpg",
+    className: "card-img-top",
+    alt: "curso de miskito"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "card-title"
+  }, props.name ? props.name : 'Nombre del curso'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "card-text"
+  }, props.description ? props.description : 'Descripción del curso'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    className: "btn btn-outline-primary"
+  }, "Tomar curso")));
 }
 
 /***/ }),
