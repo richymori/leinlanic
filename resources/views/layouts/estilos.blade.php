@@ -18,13 +18,13 @@
             background: transparent;
             display: block;
             margin: 0 auto;
-            width: 60%;
+            width: 100%;
             border: 0;
             border-bottom: 2px solid rgba(0, 0, 0, .6);
             height: 35px;
             line-height: 45px;
             margin-bottom: 10px;
-            font-size: 1.3em;
+            font-size: 1em;
             color: #000000;
         }
 
@@ -41,14 +41,24 @@
         }
         /* FUENTE */
 
-        @font-face {
+        /* @font-face {
             font-family: Hemondalisa;
             src:url(../css/Hemondalisa.ttf)
-        }
-        .font {
+        } */
+        /* @font-face {
+            font-family: subscriber;
+            src:url(../css/subscriber.otf);
+        } */
+        /* .fuente1 {
             font-family: Hemondalisa;
             font-size: 80px;
             color: #000000;
+        } */
+        .fuente1 {
+            font-family: Impact, Charcoal, sans-serif;
+            font-size: 50px;
+            color: #ffffff;
+            text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 3px 3px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
         }
 
         /* BG */
@@ -66,6 +76,41 @@
             top: 0;
             left: 0;
             z-index: -1;
+        }
+
+        /* TABLA */
+
+        table {
+            border-collapse: separate;
+        }
+
+        td,
+        th {
+            border: solid 1px rgba(0, 178, 255, 1);
+        }
+
+        tr td,
+        th {
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        th:first-child {
+            border-top-left-radius: 10px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 10px;
+        }
+
+        tr:last-child td:first-child {
+            border-bottom-left-radius: 10px;
+        }
+
+        tr:last-child td:last-child {
+            border-bottom-right-radius: 10px;
         }
     </style>
 

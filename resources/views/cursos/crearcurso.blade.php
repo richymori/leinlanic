@@ -1,18 +1,16 @@
 @extends('layouts.estilos')
 @section('content')
 
-<div id="app"></div>
-
 <div class="card col-md-4 mx-auto p-1 shadow-lg bgc bordec">
     <div class="card-header">
-        <h1 class="text-center font"> CREAR CURSO </h1>
+        <h1 class="text-center fuente1"> CREAR CURSO </h1>
     </div>
     <div class="card-body">
         <form action="{{url('/cursos')}}" method="POST" role="form">
             @csrf()
-            <div class="form-group">
+            <div class="form-group px-5">
                 <h5 class="text-center" for="">Título</h5>
-                <input type="text" class="form-control" id="curso" name="curso" placeholder="Escriba el nombre del curso">
+                <input type="text" class="form-control text-center" id="curso" name="curso" placeholder="Escriba el nombre del curso">
             </div>
 
             <div class="row">
@@ -41,6 +39,6 @@
             </div>
         </form>
     </div>
-    <script src="js/app.js"></script>
+</div>
 
-    @endsection
+@endsection

@@ -17,18 +17,11 @@ class CursoController extends Controller
     public function index()
     {
         return Curso::with([
-
             'lengua',
             'desarrollador',
-
         ])->get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $lenguas = Lengua::all();
@@ -37,12 +30,6 @@ class CursoController extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $curso = new Curso();
@@ -53,23 +40,11 @@ class CursoController extends Controller
         return redirect('cursos/lista');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Curso  $curso
-     * @return \Illuminate\Http\Response
-     */
     public function show(Curso $curso)
     {
         return $curso;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Curso  $curso
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Curso $curso)
     {
         $lenguas = Lengua::all();
@@ -77,13 +52,6 @@ class CursoController extends Controller
         return view('cursos.editarcurso', ['curso'=>$curso], compact('lenguas', 'desarrolladores'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Curso  $curso
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Curso $curso)
     {
         $curso->curso = $request['curso'];
@@ -94,12 +62,6 @@ class CursoController extends Controller
         return redirect('cursos/lista');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Curso  $curso
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Curso $curso)
     {
         $curso->delete();
