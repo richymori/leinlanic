@@ -1,41 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Tarjeta from './Tarjeta'
-import Tabla from './Tabla';
-import Course from './Course';
+import { HashRouter, Route, Switch } from "react-router-dom";
 import CourseList from './CourseList';
+import NotFound from './NotFound'
+import SingleCourse from './SingleCourse';
 
 const App = () => {
     return (
         <div className="container">
             <div className="row justify-content-center">
                 <CourseList />
-                {/* <Course
-                    name="Curso de miskito"
-                    img="imgs/148957.jpg"
-                    description="Con este curso aprenderás miskito"
-                />
-                <Course
-                    name="Curso de Mayangna"
-                    img="imgs/siuna.jpg"
-                    description="Con este curso aprenderás mayangna"
-                />
-                <Course
-                    name="Curso de garifuna"
-                    img="imgs/garifuna.jpg"
-                    description="Con este curso aprenderás garifuna"
-                />
-                <Course
-                    name="Curso de creole"
-                    img="imgs/blf.jpg"
-                    description="Con este curso aprenderás creole"
-                /> */
-                }
             </div>
         </div>
     )
 }
 
+const Root = () => (
+    <HashRouter>
+        <Switch>
+            <Route path="/" exact component={App} />
+            <Route path="/curso/:id" exact component={SingleCourse} />
+            <Route component={NotFound}/>
+        </Switch>
+    </HashRouter>
+  );
+
 if (document.getElementById('app')) {
-    ReactDOM.render(<App />, document.getElementById('app'));
+    ReactDOM.render(<Root />, document.getElementById('app'));
 }

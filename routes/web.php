@@ -43,6 +43,7 @@ Route::get('cursos/lista', 'CursoController@list');
 Route::get('cursos/crear', 'CursoController@create');
 Route::get('cursos', 'CursoController@index');
 Route::get('cursos/show/{curso}', 'CursoController@show');
+Route::get('cursos/{curso}', 'CursoController@show');
 Route::post('cursos', 'CursoController@store');
 Route::patch('cursos/{curso}', 'CursoController@update');
 Route::delete('cursos/{curso}', 'CursoController@destroy');

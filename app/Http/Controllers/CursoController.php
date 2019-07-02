@@ -61,6 +61,11 @@ class CursoController extends Controller
      */
     public function show(Curso $curso)
     {
+        $curso->load([
+            'desarrollador',
+            'lengua',
+            'niveles',
+        ]);
         return $curso;
     }
 
