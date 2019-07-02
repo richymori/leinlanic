@@ -11,7 +11,61 @@
 </head>
 
 <body>
+    <!-- Imagen -->
     <div class="jtpl-background-area jqbga-container jqbga-web--image" background-area="" style="background-image: url(&quot;https://image.jimcdn.com/app/cms/image/transf/none/path/s6c0188f3f2194ffd/backgroundarea/i214a6d1871130433/version/1522826819/image.jpg&quot;);"></div>
+    <!-- Nav -->
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark " style="text-align:center; background:black;">
+            <div class="container-fluid">
+                <div class="nav-header ml-auto">
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-1">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a href="{{ url('home') }}" class="navbar-brand">
+                        <img src="../img/logo1.png" width="30" height="30" class="d-inline-block align-top" alt=""><strong> LEINLA NIC</strong></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navbar-1">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <nav class="navbar navbar-light">
+                                <form class="form-inline">
+                                    <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                                    <button class="btn btn-sm btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                                </form>
+                            </nav>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href='/home'>Inicio</a></li>
+                        <!-- Links de autentificacion -->
+                        @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Ingresar') }}</a>
+                        </li>
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
+                        </li>
+                        @endif
+                        @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span></a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Perfil</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                        @endguest
+                        <li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">Acerca de</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <style>
         [type=text] {
@@ -39,6 +93,7 @@
             border-radius: 25px;
 
         }
+
         /* FUENTE */
 
         /* @font-face {
