@@ -1,4 +1,6 @@
+
 @extends('layouts.estilos')
+
 
 @section('content')
 <div class="container">
