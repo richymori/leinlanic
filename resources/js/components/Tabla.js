@@ -8,15 +8,16 @@ const Tabla = () => {
             <table className="table table-striped table-inverse">
                 <thead className="thead-inverse">
                     <tr>
-                        <th>Encabezado 1</th>
-                        <th>Encabezado 2</th>
-                        <th>Encabezado 3</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Edad</th>
+                        <th><span className="fa fa-cog"></span></th>
                     </tr>
                 </thead>
                 <tbody>
                     {
                         [1,2,3,4,5].map(item => {
-                            return <TableItem key={item}/>
+                            return <TableItem key={item} id={item}/>
                         })
                     }
                 </tbody>
