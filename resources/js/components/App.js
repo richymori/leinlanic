@@ -4,11 +4,13 @@ import { HashRouter, Route, Switch } from "react-router-dom";
 import CourseList from './CourseList';
 import NotFound from './NotFound'
 import SingleCourse from './SingleCourse';
+import CourseForm from './CourseForm';
 
 const App = () => {
     return (
         <div className="container">
             <div className="row justify-content-center">
+                <CourseForm />
                 <CourseList />
             </div>
         </div>
