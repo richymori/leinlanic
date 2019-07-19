@@ -28,10 +28,17 @@ const SingleCourse = (props) => {
             <div className="row">
                 <div className="col-sm-4">
                     <div className="card">
-                        <img src={curso.imagen ? curso.imagen : 'imgs/148957.jpg'} className="card-img-top" alt="curso de miskito" />
+                        <img
+                            src={curso.imagen ? curso.imagen : 'imgs/148957.jpg'}
+                            className="card-img-top" alt="curso de miskito"
+                        />
                         <div className="card-body">
-                            <h2 className="card-title">{curso.curso ? curso.curso : 'Nombre del curso'}</h2>
-                            <p className="card-text">{curso.descripcion ? curso.descripcion : 'Descripción del curso'}</p>
+                            <h2 className="card-title">
+                                {curso.curso ? curso.curso : 'Nombre del curso'}
+                            </h2>
+                            <p className="card-text">
+                                {curso.descripcion ? curso.descripcion : 'Descripción del curso'}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -45,7 +52,7 @@ const SingleCourse = (props) => {
                                     Niveles
                                     {
                                         curso.niveles.map(nivel => {
-                                            return(
+                                            return (
                                                 <h2 key={nivel.id}>{nivel.nivel}</h2>
                                             )
                                         })
