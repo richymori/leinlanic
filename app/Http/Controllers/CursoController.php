@@ -47,10 +47,14 @@ class CursoController extends Controller
     {
         $curso = new Curso();
         $curso->curso = $request['curso'];
-        $curso->lengua_id = $request['lengua_id'];
-        $curso->desarrollador_id = $request['desarrollador_id'];
+        $curso->descripcion = $request['descripcion'];
+        $curso->imagen = $request['imagen'];
+        $curso->lengua_id = 1;
+        $curso->desarrollador_id = 1;
         $curso->save();
-        return redirect('cursos/lista');
+        return response()->json([
+            'message' => 'success'
+        ], 200);
     }
 
     /**

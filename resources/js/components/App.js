@@ -10,7 +10,6 @@ const App = () => {
     return (
         <div className="container">
             <div className="row justify-content-center">
-                <CourseForm />
                 <CourseList />
             </div>
         </div>
@@ -21,6 +20,7 @@ const Root = () => (
     <HashRouter>
         <Switch>
             <Route path="/" exact component={App} />
+            <Route path="/curso/create" exact component={CourseForm} />
             <Route path="/curso/:id" exact component={SingleCourse} />
             <Route component={NotFound}/>
         </Switch>
